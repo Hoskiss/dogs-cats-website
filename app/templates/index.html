@@ -17,7 +17,7 @@
         <div class="navbar-header"><a class="navbar-brand"> <img src="{{ url_for('static', filename='images/logo.png') }}" style="width:22px;height:22px;display:inline-block"/><strong style="vertical-align:middle;">貓狗辨識</strong></a></div>
         <div id="visitors">
           <div class="nav navbar-nav navbar-right">
-            <button class="btn btn-default navbar-btn btn-custom" type="button" data-target="#login" data-toggle="modal">登入</button>
+            <button class="btn btn-default navbar-btn btn-custom" type="button" data-target="#login" style="display:none" data-toggle="modal">登入</button>
             <button class="btn btn-default navbar-btn btn-custom" type="button" data-target="#register" data-toggle="modal">註冊</button>
           </div>
         </div>
@@ -38,10 +38,6 @@
           <div class="col-sm-10 content">
             <div class="image-upload-wrap">
               <input class="file-upload-input" id="uploadBtn" type="file" onchange="uploadFile(this);" accept="images/*">
-                <!-- <div class="drag-text">
-                  <h3>點擊或將圖片拖曳到這裡</h3>
-                </div> -->
-
                 <label class="uploadLabel drag-text" for="uploadBtn"> 點擊或將圖片拖曳到這裡 </label>
 
               </input>
@@ -83,7 +79,7 @@
                   <input class="form-control" id="password" placeholder="密碼"/>
                 </div><span class="help-block with-errors"></span>
               </div><a id="goto-forget" herf="#">忘記密碼?</a>
-              <button class="btn btn-primary btn-block" type="submit" name="login_home" value="Login_Home">登入</button>
+              <button class="btn btn-primary btn-block login-submit" type="submit" name="login_home" value="Login_Home">登入</button>
             </form>
           </div>
         </div>
@@ -112,7 +108,7 @@
                   <input class="form-control" id="re-password" placeholder="確認密碼"/>
                 </div><span class="help-block with-errors"></span>
               </div>
-              <button class="btn btn-primary btn-block" type="submit" name="register_home" value="Register_Home">註冊</button>
+              <button class="btn btn-primary btn-block register-submit" type="submit" name="register_home" value="Register_Home">註冊</button>
             </form>
           </div>
         </div>
