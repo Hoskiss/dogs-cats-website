@@ -28,7 +28,8 @@ function round(value, precision) {
 
 $("button#classify").click(function(){
   if (reader.result) {
-    server_endpoint = 'http://127.0.0.1:8081/classifier-predict/';
+    server_endpoint = '0.0.0.0:8081/classifier-predict/';
+
     query_data = {"instances": [
       {'image_bytes': {'b64': reader.result}}
     ]}
