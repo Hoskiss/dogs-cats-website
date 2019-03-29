@@ -56,10 +56,10 @@ $("button.remove-image").click(function(){
 });
 
 $('.image-upload-wrap').bind('dragover', function () {
-    $('.image-upload-wrap').addClass('image-dropping');
-  });
-  $('.image-upload-wrap').bind('dragleave', function () {
-    $('.image-upload-wrap').removeClass('image-dropping');
+  $('.image-upload-wrap').addClass('image-dropping');
+});
+$('.image-upload-wrap').bind('dragleave', function () {
+  $('.image-upload-wrap').removeClass('image-dropping');
 });
 
 $("#login #goto-register").click(function(){
