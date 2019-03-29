@@ -44,13 +44,13 @@
             </div>
             <div class="file-upload-content"><img class="file-upload-image" src="#" alt="你的圖片"/>
               <div class="image-title-wrap">
-                <button class="remove-image" type="button" onclick="removeUpload()">移除圖片<span class="image-title">uploaded image</span></button>
+                <button class="remove-image" type="button">移除圖片<span class="image-title">uploaded image</span></button>
               </div>
             </div>
           </div>
           <div class="col-sm-1 next"><span class="glyphicon glyphicon-chevron-right"></span></div>
           <button class="btn btn-default btn-custom" id="classify" type="button">辨識是貓還是狗</button>
-          <div class="col-sm-12 content" id="cat-vs-dog">
+          <div class="col-sm-12 content" id="cat-vs-dog" style="display:none">
             <div class="cat"></div>
             <div class="progress">
               <div class="progress-bar progress-bar-striped active" role="progressbar" id="cat-probability" style="width:45%;min-width:2em">45%</div>
@@ -181,11 +181,11 @@
         </div>
       </div>
     </div>
-    <!-- <footer>
+    <footer style="display:none">
       <div class="container">
         <p>Copyright © 2019s test. All Rights Reserved.</p>
       </div>
-    </footer> -->
+    </footer>
   </body>
   <script src="{{ url_for('static', filename='js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>

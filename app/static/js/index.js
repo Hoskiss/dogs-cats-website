@@ -15,12 +15,6 @@ function uploadFile(input) {
   }
 }
 
-function removeUpload() {
-  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-  $('.file-upload-content').hide();
-  $('.image-upload-wrap').show();
-}
-
 function round(value, precision) {
   var multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
@@ -46,8 +40,19 @@ $("button#classify").click(function(){
       $('#dog-probability').css("width", round(result[1]*100, 0).toString()+"%");
       $('#cat-probability').text(round(result[0]*100, 1) + "%");
       $('#dog-probability').text(round(result[1]*100, 1) + "%");
+      $('#classify').hide();
+      $('#cat-vs-dog').show();
     });
   }
+});
+
+$("button.remove-image").click(function(){
+  $('.file-upload-input').val("");
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+
+  $('#classify').show();
+  $('#cat-vs-dog').hide();
 });
 
 $('.image-upload-wrap').bind('dragover', function () {
