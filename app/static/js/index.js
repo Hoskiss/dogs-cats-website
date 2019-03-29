@@ -26,10 +26,13 @@ function round(value, precision) {
   return Math.round(value * multiplier) / multiplier;
 }
 
+// change to your classifier server ip here
+var server_location = '127.0.0.1:8081';
+var server_endpoint = 'http://' + server_location + '/classifier-predict/';
+
 $("button#classify").click(function(){
   if (reader.result) {
-    server_endpoint = 'http://0.0.0.0:8081/classifier-predict/';
-    query_data = {"instances": [
+    var query_data = {"instances": [
       {'image_bytes': {'b64': reader.result}}
     ]}
     $.ajax({
