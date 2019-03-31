@@ -27,6 +27,7 @@ var server_endpoint = 'http://' + server_location + '/classifier-predict/';
 $("button#classify").click(function(){
   if ($('.file-upload-input').val()) {
     $("#cat-vs-dog").hide();
+    $("#cat-vs-dog").removeClass("animation-show");
     $("#cat-probability").css("width", "0%");
     $("#dog-probability").css("width", "0%");
     $("#loading-bar").show();
@@ -41,16 +42,16 @@ $("button#classify").click(function(){
       url: server_endpoint
     }).done(function (response) {
       var result = response.predictions[0];
+      $("#loading-bar").hide();
+      $("#cat-vs-dog").show();
+      $("#cat-vs-dog").addClass("animation-show");
       // console.log(result);
-      $('#cat-probability').animate({"width": round(result[0]*100, 0).toString()+"%"}, 1);
-      $('#dog-probability').animate({"width": round(result[1]*100, 0).toString()+"%"}, 1);
+      $('#cat-probability').stop(true, true).delay(500).animate({"width": round(result[0]*100, 0).toString()+"%"}, 1);
+      $('#dog-probability').stop(true, true).delay(500).animate({"width": round(result[1]*100, 0).toString()+"%"}, 1);
 
       $('#cat-probability').text(round(result[0]*100, 1) + "%");
       $('#dog-probability').text(round(result[1]*100, 1) + "%");
       $('#classify').hide();
-
-      $("#loading-bar").hide();
-      $("#cat-vs-dog").show();
     });
   }
 });
