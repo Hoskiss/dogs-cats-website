@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+html(lang="zh-hant-tw")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
+    link(rel="shortcut icon" href="favicon.ico")
+    link(rel="bookmark" href="favicon.ico")
+    title dog&cat
+    link(rel="stylesheet", href="css/normalize.css")
+    link(rel="stylesheet", href="css/bootstrap.min.css")
+    link(rel="stylesheet", href="css/style.css")
+    script(defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js")
+  body
+    nav.navbar.navbar-default.navbar-fixed-top.font-sans
+      .container
+        .navbar-header
+          a.navbar-brand 
+            img(src="images/logo.png" style="width:22px;height:22px;display:inline-block;")
+            <strong style="vertical-align:middle;">貓狗辨視</strong>
+    section#current-block
+      .container.text-center.font-sans.veritcal
+        h2.heading 上傳貓貓狗狗吧
+        .row
+          .col-sm-8.col-sm-offset-2.content
+            .image-upload-wrap
+              label.drag-text 點擊或將圖片拖曳到這裡
+              input.file-upload-input(type="file" onchange="readURL(this);" accept="images/*")
+            .file-upload-content
+              img.file-upload-image(src="#", alt="你的圖片")
+              .image-title-wrap
+                button.remove-image(type="button" onclick="removeUpload()") 移除圖片
+                  span.image-title uploaded image
+          button.btn.btn-default.btn-custom(type="button" onclick="setloading()") 辨識是貓還是狗
+          .col-sm-8.col-sm-offset-2.content#loading-bar(data-second="5" style="display:none")
+            .progress
+              .progress-bar.progress-bar-info.progress-bar-striped(role="progressbar")
+          .col-sm-8.col-sm-offset-2.content#cat-vs-dog(style="display:none")
+            .cat
+            .progress
+              #cat-probability.progress-bar.progress-bar-striped.active(role="progressbar") 45%
+              #dog-probability.progress-bar.progress-bar-success.progress-bar-striped.active.pull-right(role="progressbar") 55%
+            .dog
+    footer
+      .container
+        p Copyright © 2019s test. All Rights Reserved.
+  script(src="js/jquery-3.1.1.min.js")
+  script(src="js/bootstrap.min.js")
+  script(src="js/validator.min.js")
+  script(src="js/index.js")
+  script.
+    function setloading(){
+      $("#cat-vs-dog").hide();
+      $("#cat-vs-dog").removeClass("animation-show");
+      $("#loading-bar").show();
+      var second = $("#loading-bar").data("second");
+      $("#loading-bar").find(".progress-bar").css("animation-duration",second+"s");
+      setTimeout(function(){
+        $("#loading-bar").hide();
+        $("#cat-vs-dog").show();
+        $("#cat-vs-dog").addClass("animation-show");
+      },second*1000);
+    }

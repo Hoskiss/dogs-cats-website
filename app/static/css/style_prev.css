@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html {
   font-size: 62.5%; }
 
@@ -114,12 +113,13 @@ header {
 
 section#current-block, section#previous-block, section#closed-block, section#rank {
   background-color: #F2F2F2;
+  padding-top: 60px;
   position: relative; }
   section#current-block .veritcal, section#previous-block .veritcal, section#closed-block .veritcal, section#rank .veritcal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(12%); }
+    transform: translateX(-50%) translateY(15%); }
   section#current-block .heading, section#previous-block .heading, section#closed-block .heading, section#rank .heading {
     font-size: 3rem;
     color: #4c5d6f; }
@@ -215,25 +215,39 @@ section#previous-block, section#closed-block {
   padding: 0 15px 15px 15px;
   color: #222; }
 
+/*.drag-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%); }
+  .drag-text label {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #8da9d2;
+    padding: 175px 0; }*/
+
 .drag-text {
   text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  font-size: 24px;
-  font-weight: 400;
+  font-weight: bold;
   text-transform: uppercase;
-  color: #8da9d2; }
+  color: #8da9d2;
+  padding: 175px 0;
+  font-size: 2em;
+}
 
 .file-upload-image {
-  max-height: 360px;
-  max-width: 360px;
+  max-height: 200px;
+  max-width: 200px;
   margin: auto;
   padding: 20px; }
 
 .remove-image {
-  min-width: 200px;
+  width: 200px;
   margin: 0;
   color: #fff;
   background: #cd4535;
@@ -259,57 +273,18 @@ section#previous-block, section#closed-block {
   background-size: contain;
   display: inline-block;
   width: 60px;
-  height: 60px;
-  opacity: 0;
-  transition: opacity 1s; }
-  .cat::after {
-    content: "阿貓";
-    position: absolute;
-    background-color: #60758d;
-    color: #fff;
-    padding: 4px 12px;
-    border-radius: 15px;
-    bottom: -25px;
-    left: 30px; }
+  height: 60px; }
 
 .dog {
   background-image: url("../images/dog.png");
   background-size: contain;
   display: inline-block;
   width: 60px;
-  height: 60px;
-  opacity: 0;
-  transition: opacity 1s; }
-  .dog::after {
-    content: "阿狗";
-    position: absolute;
-    background-color: #60758d;
-    color: #fff;
-    padding: 4px 12px;
-    border-radius: 15px;
-    bottom: -25px;
-    right: 30px; }
+  height: 60px; }
 
 .progress {
   width: 80%;
   display: inline-block; }
-
-#loading-bar .progress-bar {
-  animation: width;
-  animation-fill-mode: forwards; }
-
-@keyframes width {
-  0% {
-    width: 0%; }
-  100% {
-    width: 100%; } }
-.animation-show .cat, .animation-show .dog {
-  opacity: 1; }
-
-#cat-probability, #dog-probability {
-  width: 0%;
-  transition: width 2s;
-  transition-delay: 1s; }
 
 .prev, .next {
   line-height: 47vh; }

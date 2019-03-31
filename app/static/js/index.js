@@ -25,7 +25,12 @@ var server_location = '127.0.0.1:8081';
 var server_endpoint = 'http://' + server_location + '/classifier-predict/';
 
 $("button#classify").click(function(){
-  if (reader.result) {
+  if ($('.file-upload-input').val()) {
+    $("#cat-vs-dog").hide();
+    $("#cat-vs-dog").removeClass("animation-show");
+    $("#loading-bar").show();
+    $("#loading-bar").find(".progress-bar").css("animation-duration", "5s");
+
     var query_data = {"instances": [
       {'image_bytes': {'b64': reader.result}}
     ]}
@@ -41,7 +46,10 @@ $("button#classify").click(function(){
       $('#cat-probability').text(round(result[0]*100, 1) + "%");
       $('#dog-probability').text(round(result[1]*100, 1) + "%");
       $('#classify').hide();
-      $('#cat-vs-dog').show();
+
+      $("#loading-bar").hide();
+      $("#cat-vs-dog").show();
+      $("#cat-vs-dog").addClass("animation-show");
     });
   }
 });
@@ -53,6 +61,7 @@ $("button.remove-image").click(function(){
 
   $('#classify').show();
   $('#cat-vs-dog').hide();
+  $("#loading-bar").hide();
 });
 
 $('.image-upload-wrap').bind('dragover', function () {
