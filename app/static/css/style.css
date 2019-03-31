@@ -307,9 +307,7 @@ section#previous-block, section#closed-block {
   opacity: 1; }
 
 #cat-probability, #dog-probability {
-  width: 0%;
-  transition: width 2s;
-  transition-delay: 1s; }
+  width: 0%;  }
 
 .prev, .next {
   line-height: 47vh; }

@@ -27,7 +27,8 @@ var server_endpoint = 'http://' + server_location + '/classifier-predict/';
 $("button#classify").click(function(){
   if ($('.file-upload-input').val()) {
     $("#cat-vs-dog").hide();
-    $("#cat-vs-dog").removeClass("animation-show");
+    $("#cat-probability").css("width", "0%");
+    $("#dog-probability").css("width", "0%");
     $("#loading-bar").show();
     $("#loading-bar").find(".progress-bar").css("animation-duration", "5s");
 
@@ -41,15 +42,15 @@ $("button#classify").click(function(){
     }).done(function (response) {
       var result = response.predictions[0];
       // console.log(result);
-      $('#cat-probability').css("width", round(result[0]*100, 0).toString()+"%");
-      $('#dog-probability').css("width", round(result[1]*100, 0).toString()+"%");
+      $('#cat-probability').animate({"width": round(result[0]*100, 0).toString()+"%"}, 1);
+      $('#dog-probability').animate({"width": round(result[1]*100, 0).toString()+"%"}, 1);
+
       $('#cat-probability').text(round(result[0]*100, 1) + "%");
       $('#dog-probability').text(round(result[1]*100, 1) + "%");
       $('#classify').hide();
 
       $("#loading-bar").hide();
       $("#cat-vs-dog").show();
-      $("#cat-vs-dog").addClass("animation-show");
     });
   }
 });
